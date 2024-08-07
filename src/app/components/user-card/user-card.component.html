@@ -1,1 +1,21 @@
-<p>user-card works!</p>
+<div class="card flex ">
+  <p-card [style]="{ width: '400px' }">
+      <ng-template pTemplate="header">
+        <div class="header-container">
+          <img class="rounded-image" alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+        </div>
+      </ng-template>
+
+      <div class="content">
+        <span>Nombre</span>
+      </div>
+
+      <ng-template pTemplate="footer">
+          <div class="flex gap-3 mt-1">
+            <p-button label="Detalle" [rounded]="true" icon="pi pi-search" severity="success" />
+            <p-button label="Actualizar" [rounded]="true" icon="pi pi-sync"  />
+            <p-button label="Borrar" [rounded]="true" icon="pi pi-trash" severity="danger" />
+          </div>
+      </ng-template>
+  </p-card>
+</div>
