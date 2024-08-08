@@ -8,3 +8,11 @@
 .p-card-custom {
   box-shadow: 1px 8px 12px rgba(0, 0, 0, 0.2);
 }
+
+.p-menubar .p-menubar-custom, .p-menubar .p-menubar-end {
+  margin-left: 0;
+}
+
+p-menubarsub {
+  margin-left: auto;
+}
