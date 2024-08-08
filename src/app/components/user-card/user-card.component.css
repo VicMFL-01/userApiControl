@@ -1,6 +1,4 @@
-p-card{
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
-}
+
 
 .header-container {
   display: flex;
@@ -8,6 +6,7 @@ p-card{
   align-items: center;
   height: 15rem;
   padding-top: 1rem;
+  margin-bottom: -1.5rem;
 }
 
 .rounded-image {
@@ -20,6 +19,7 @@ p-card{
 .content {
   width: auto;
   text-align: center;
+  text-wrap: wrap;
 }
 
 

@@ -1,13 +1,13 @@
-<div class="card flex ">
-  <p-card [style]="{ width: '400px' }">
+<div class="card flex">
+  <p-card [style]="{ width: '400px' }" class="p-card-custom">
       <ng-template pTemplate="header">
         <div class="header-container">
-          <img class="rounded-image" alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+          <img class="rounded-image" alt="Card" [src]="userTest.image" />
         </div>
       </ng-template>
 
       <div class="content">
-        <span>Nombre</span>
+        <h2>{{userTest.first_name + userTest.last_name}}</h2>
       </div>
 
       <ng-template pTemplate="footer">

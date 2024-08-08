@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
+
+.p-card {
+  background-color: rgba(110, 166, 240, 0.363);
+}
+
+.p-card-custom {
+  box-shadow: 1px 8px 12px rgba(0, 0, 0, 0.2);
+}
