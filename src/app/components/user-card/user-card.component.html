@@ -2,12 +2,12 @@
   <p-card [style]="{ width: '400px' }" class="p-card-custom">
       <ng-template pTemplate="header">
         <div class="header-container">
-          <img class="rounded-image" alt="Card" [src]="userTest.image" />
+          <img class="rounded-image" alt="Card" [src]="userData?.image" />
         </div>
       </ng-template>
 
       <div class="content">
-        <h2>{{userTest.first_name + userTest.last_name}}</h2>
+        <h2>{{userData?.first_name + " " + userData?.last_name}}</h2>
       </div>
 
       <ng-template pTemplate="footer">
