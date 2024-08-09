@@ -1,16 +1,12 @@
 <app-navbar></app-navbar>
 
-<div class="grid mt-3">
-  <div class="col">
-      <div class="text-center p-3 border-round-sm bg-primary font-bold">1</div>
-  </div>
-  <div class="col">
-      <div class="text-center p-3 border-round-sm bg-primary font-bold ">2</div>
-  </div>
-  <div class="col">
-      <div class="text-center p-3 border-round-sm bg-primary font-bold ">3</div>
-  </div>
-  <div class="col">
-    <div class="text-center p-3 border-round-sm bg-primary font-bold ">4</div>
+<div class="container">
+  <div class="grid mt-3">
+
+    @for (user of response; track user.id) {
+      <div class="col">
+        <app-user-card [userData]="user"></app-user-card>
+      </div>
+    }
   </div>
 </div>

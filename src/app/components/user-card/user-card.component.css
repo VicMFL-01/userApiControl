@@ -1,12 +1,9 @@
-
-
 .header-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 15rem;
   padding-top: 1rem;
-  margin-bottom: -1.5rem;
 }
 
 .rounded-image {
@@ -17,9 +14,9 @@
 }
 
 .content {
-  width: auto;
   text-align: center;
   text-wrap: wrap;
 }
+
 
 
