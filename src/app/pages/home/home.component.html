@@ -3,8 +3,8 @@
 <div class="container">
   <div class="grid mt-3">
 
-    @for (user of response; track user.id) {
-      <div class="col">
+    @for (user of response; track user._id) {
+      <div class="col flipup animation-duration-1000 ">
         <app-user-card [userData]="user"></app-user-card>
       </div>
     }

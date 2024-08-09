@@ -12,9 +12,9 @@
 
       <ng-template pTemplate="footer">
           <div class="flex gap-3">
-            <p-button label="Detalle" [rounded]="true" icon="pi pi-search" severity="success" />
-            <p-button label="Actualizar" [rounded]="true" icon="pi pi-sync"  />
-            <p-button label="Borrar" [rounded]="true" icon="pi pi-trash" severity="danger" />
+            <p-button label="Detalle" [rounded]="true" icon="pi pi-search" severity="success" [routerLink]="['/userDetail', userData?._id]" />
+            <p-button label="Actualizar" [rounded]="true" icon="pi pi-sync"/>
+            <p-button label="Borrar" [rounded]="true" icon="pi pi-trash" severity="danger"/>
           </div>
       </ng-template>
   </p-card>

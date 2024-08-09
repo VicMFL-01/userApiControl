@@ -16,4 +16,8 @@ export class UserService {
   getAll(): Observable<Pagination> {
     return this.http.get<Pagination>(this.baseUrl);
   }
+
+  getById(id:string): Observable<User> {
+    return this.http.get<User>(this.baseUrl+"/"+id);
+  }
 }

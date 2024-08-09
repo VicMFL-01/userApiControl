@@ -21,11 +21,13 @@ export class NavbarComponent {
       this.items = [
           {
               label: 'Home',
-              icon: 'pi pi-home'
+              icon: 'pi pi-home',
+              route: '/home'
           },
           {
               label: 'Nuevo Usuario',
-              icon: 'pi pi-user'
+              icon: 'pi pi-user',
+              route: '/new-user'
           }
       ];
   }

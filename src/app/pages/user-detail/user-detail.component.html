@@ -1,1 +1,29 @@
-<p>user-detail works!</p>
+<app-navbar></app-navbar>
+
+<div class="flex mt-3">
+  <div class="flex-1 text-center p-4">
+    <p-image class="image-detail"
+    [src]="userDetail?.image"
+    [previewImageSrc]="userDetail?.image"
+    [alt]="userDetail?.first_name"
+    width="450"
+    [preview]="true" />
+  </div>
+
+  <p-divider layout="vertical" />
+
+  <div class="flex-1 p-4">
+    <h1>{{userDetail?.first_name}}</h1>
+    <h2>{{userDetail?.last_name}}</h2>
+    <span><b>Nombre de usuario: </b> {{userDetail?.username}}</span>
+    <br>
+    <span><b>Email: </b> {{userDetail?.email}}</span>
+    <div class="flex gap-3">
+      <p-button label="Eliminar" [rounded]="true" icon="pi pi-trash" severity="danger" size="large"/>
+      <p-button label="Actualizar" [rounded]="true" icon="pi pi-sync" size="large"/>
+      <p-button label="Volver a listado" [rounded]="true" icon="pi pi-list" severity="help" size="large" />
+
+
+    </div>
+  </div>
+</div>
