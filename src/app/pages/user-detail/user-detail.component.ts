@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { UserService } from '../../services/user-service.service';
+import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
 import { DividerModule } from 'primeng/divider';
 import { ImageModule } from 'primeng/image';

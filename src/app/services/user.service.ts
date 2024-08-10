@@ -20,4 +20,8 @@ export class UserService {
   getById(id:string): Observable<User> {
     return this.http.get<User>(this.baseUrl+"/"+id);
   }
+
+  insertUser(data:User): Observable<User> {
+    return this.http.post<User>(this.baseUrl,data);
+  }
 }
