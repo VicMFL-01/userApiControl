@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user-service.service';
 import { User } from '../../interfaces/user.interface';
 import { DividerModule } from 'primeng/divider';
@@ -10,7 +10,7 @@ import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [NavbarComponent,DividerModule,ImageModule,ButtonModule],
+  imports: [NavbarComponent,DividerModule,ImageModule,ButtonModule,RouterLink],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
@@ -19,7 +19,7 @@ export class UserDetailComponent {
   userService = inject(UserService);
 
   id!:string;
-  userDetail!: User;
+  userDetail: User | undefined;
 
   constructor(private route: ActivatedRoute) {
 

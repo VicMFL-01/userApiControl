@@ -2,3 +2,13 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.titleUser {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.info {
+  display: inline-block;
+  margin-top: 1rem;
+}
