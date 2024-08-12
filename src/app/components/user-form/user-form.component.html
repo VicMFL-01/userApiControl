@@ -6,25 +6,40 @@
     <div class="flex flex-column gap-2">
       <label for="first_name">Nombre Usuario</label>
       <input pInputText id="first_name" placeholder="Introduce nombre de usuario" formControlName="first_name" variant="filled"/>
+      @if(checkControl('first_name','required')) {
+        <p class="errortext">El campo es requerido</p>
+      }
     </div>
 
     <div class="flex flex-column gap-2 mt-5">
       <label for="last_name">Apellido Usuario</label>
       <input pInputText id="last_name" placeholder="Introduce apellido de usuario" formControlName="last_name" variant="filled"/>
+      @if(checkControl('last_name','required')) {
+        <p class="errortext">El campo es requerido</p>
+      }
     </div>
 
     <div class="flex flex-column gap-2 mt-5">
       <label for="email">Email Usuario</label>
       <input pInputText type="email" id="email" placeholder="Introduce email de usuario" formControlName="email" variant="filled"/>
+      @if(checkControl('email','required')) {
+        <p class="errortext">El campo es requerido</p>
+      }
+      @if(checkControl('email','pattern')) {
+        <p class="errortext">El campo es incorrecto</p>
+      }
     </div>
 
     <div class="flex flex-column gap-2 mt-5">
       <label for="image">Imagen Usuario</label>
       <input pInputText type="url" id="image" placeholder="Introduce email de usuario" formControlName="image" variant="filled"/>
+      @if(checkControl('url','required')) {
+        <p class="errortext">El campo es requerido</p>
+      }
     </div>
 
     <p-toast position="top-right" key="br" />
-    <p-button type="submit" class="flex mt-5" label="Guardar" icon="pi pi-check" />
+    <p-button type="submit" class="flex mt-5" label="Guardar" icon="pi pi-check" [disabled]="!userForm.valid"/>
 
   </form>
 
