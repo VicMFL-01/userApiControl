@@ -14,7 +14,7 @@
           <div class="flex gap-3">
             <p-button label="Detalle" [rounded]="true" icon="pi pi-search" severity="success" [routerLink]="['/userDetail', userData?._id]" />
             <p-button label="Actualizar" [rounded]="true" icon="pi pi-sync" (click)="updateUser(userData)"/>
-            <p-button label="Borrar" [rounded]="true" icon="pi pi-trash" severity="danger"/>
+            <app-dialog-confirm [userInfo]="userData"></app-dialog-confirm>
           </div>
       </ng-template>
   </p-card>

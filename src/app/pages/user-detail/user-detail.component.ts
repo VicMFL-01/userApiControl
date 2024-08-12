@@ -1,16 +1,17 @@
 import { Component, inject } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
 import { DividerModule } from 'primeng/divider';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { DialogConfirmComponent } from "../../components/dialog-confirm/dialog-confirm.component";
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [NavbarComponent,DividerModule,ImageModule,ButtonModule,RouterLink],
+  imports: [NavbarComponent, DividerModule, ImageModule, ButtonModule, RouterLink, DialogConfirmComponent],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })

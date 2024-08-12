@@ -22,7 +22,7 @@
     <br>
     <span class="info"><strong>Email: </strong> {{userDetail?.email}}</span>
     <div class="flex flex-wrap gap-2 mt-5">
-      <p-button class="flex-order-0" label="Eliminar" [rounded]="true" icon="pi pi-trash" severity="danger" size="large"/>
+      <app-dialog-confirm [userInfo]="userDetail" [size]="'large'" [page]="'detail'"></app-dialog-confirm>
       <p-button class="flex-order-1" label="Actualizar" [rounded]="true" icon="pi pi-sync" size="large" (click)="updateUser(userDetail)"/>
       <p-button class="flex-order-2" label="Volver a listado" [rounded]="true" icon="pi pi-list" severity="help" size="large" [routerLink]="['/home']"/>
     </div>

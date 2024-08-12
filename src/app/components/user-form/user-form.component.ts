@@ -4,10 +4,10 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { User } from '../../interfaces/user.interface';
-import { UserService } from '../../services/user.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 import { ToastService } from '../../services/toast.service';
 
 @Component({
