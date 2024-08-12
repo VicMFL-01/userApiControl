@@ -10,6 +10,7 @@ import { Pagination } from '../interfaces/pagination.interface';
 export class UserService {
 
   baseUrl: string = "https://peticiones.online/api/users";
+  private userToUpdate!: User;
 
   constructor(private http: HttpClient) { }
 
@@ -23,5 +24,17 @@ export class UserService {
 
   insertUser(data:User): Observable<User> {
     return this.http.post<User>(this.baseUrl,data);
+  }
+
+  updateUser(data:User): Observable<User> {
+    return this.http.put<User>(this.baseUrl+"/"+data._id,data);
+  }
+
+  setDataUserUpdate(data:User) {
+    this.userToUpdate = data;
+  }
+
+  getDataUserUpdate() {
+    return this.userToUpdate;
   }
 }

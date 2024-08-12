@@ -13,6 +13,6 @@ import { MessageService } from 'primeng/api';
 export class NewUserComponent {
 
   title:string = "Nuevo Usuario";
-
+  tipe:string = "insert";
 
 }

@@ -21,6 +21,8 @@ import { ToastService } from '../../services/toast.service';
 export class UserFormComponent {
 
   @Input() titleForm!: string;
+  @Input() tipe!: string;
+
   userForm!:FormGroup;
 
   userService = inject(UserService);
@@ -45,6 +47,34 @@ export class UserFormComponent {
     }, [])
   }
 
+  ngOnInit(): void {
+    if(this.tipe === 'update') {
+      let updateUsr:User = this.userService.getDataUserUpdate();
+
+      if(updateUsr === undefined) {
+        this.router.navigate(['/home']);
+      }
+
+      this.userForm = new FormGroup({
+        _id: new FormControl(updateUsr._id, []),
+        first_name: new FormControl(updateUsr.first_name, [
+          Validators.required
+        ]),
+        last_name: new FormControl(updateUsr.last_name, [
+          Validators.required
+        ]),
+        username: new FormControl(updateUsr.username, []),
+        email: new FormControl(updateUsr.email, [
+          Validators.required,
+          Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
+        ]),
+        image: new FormControl(updateUsr.image, [
+          Validators.required
+        ]),
+      }, []);
+    }
+  }
+
   checkControl(formControlName:string, validador:string) {
     return this.userForm.get(formControlName)?.hasError(validador) && this.userForm.get(formControlName)?.touched;
   }
@@ -52,15 +82,13 @@ export class UserFormComponent {
   getDataUser() {
     let user:User = this.userForm.value;
     if(user._id) {
-      //actualiza usuario
+      this.updateNewUser(user);
     } else {
       this.insertNewUser(user);
     }
   }
 
   insertNewUser(data:User) {
-    console.log(data);
-
     if((data.first_name !== null && data.last_name !== null) && (data.first_name !== '' && data.last_name !== '') ) {
       let username = data.first_name.toLowerCase() + "." + data.last_name.toLowerCase();
       data.username = username;
@@ -76,8 +104,19 @@ export class UserFormComponent {
         }
       )
     }
+  };
 
-
+  updateNewUser(data:User) {
+    this.userService.updateUser(data).subscribe(
+      (response) => {
+        this.toast.setMessageToast('success','Usuario actualizado', 'El usuario se ha actualizado con exito')
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.error('Error updating user', error);
+        this.messageService.add({ severity: 'danger', summary: 'Error', detail: 'Error actualizando usuario', key: 'br', life: 3000 });
+      }
+    )
   };
 
 }

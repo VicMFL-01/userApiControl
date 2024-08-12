@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user.interface';
 import { DividerModule } from 'primeng/divider';
@@ -17,9 +17,10 @@ import { ButtonModule } from 'primeng/button';
 export class UserDetailComponent {
 
   userService = inject(UserService);
+  router = inject(Router);
 
   id!:string;
-  userDetail: User | undefined;
+  userDetail!: User;
 
   constructor(private route: ActivatedRoute) {
 
@@ -40,6 +41,14 @@ export class UserDetailComponent {
         }
       )
     }
+  }
+
+  updateUser(userData:User | null) {
+    if(userData !== null) {
+      this.userService.setDataUserUpdate(userData);
+      this.router.navigate(['/update-user'])
+    }
+
   }
 
 }
