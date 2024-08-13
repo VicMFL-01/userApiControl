@@ -14,8 +14,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Pagination> {
-    return this.http.get<Pagination>(this.baseUrl);
+  getAll(page:number): Observable<Pagination> {
+    return this.http.get<Pagination>(this.baseUrl+"?page="+page);
   }
 
   getById(id:string): Observable<User> {
