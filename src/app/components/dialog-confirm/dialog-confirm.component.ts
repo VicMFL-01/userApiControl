@@ -48,15 +48,19 @@ export class DialogConfirmComponent {
     deleteUser(userInfo:User) {
       this.userService.deleteUser(userInfo._id).subscribe(
         (response) => {
-          this.toast.setMessageToast('success','Usuario eliminado', 'El usuario se ha eliminado con exito');
-          this.messageService.add({ severity: 'success', summary: 'Usuario eliminado', detail: 'El usuario se ha eliminado con exito', life: 3000 });
-          if(this.page === 'detail') {
-            this.router.navigate(['/home']);
+          if(response['error']) {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: response?.error, life: 3000 });
+          } else {
+            this.toast.setMessageToast('success','Usuario eliminado', 'El usuario se ha eliminado con exito');
+            this.messageService.add({ severity: 'success', summary: 'Usuario eliminado', detail: 'El usuario se ha eliminado con exito', life: 3000 });
+            if(this.page === 'detail') {
+              this.router.navigate(['/home']);
+            }
           }
         },
         (error) => {
           console.error('Error delete user', error);
-          this.messageService.add({ severity: 'danger', summary: 'Error', detail: 'Error eliminando usuario', key: 'br', life: 3000 });
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error eliminando usuario', life: 3000 });
         }
       )
     }

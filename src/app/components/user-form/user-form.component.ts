@@ -22,6 +22,8 @@ export class UserFormComponent {
 
   @Input() titleForm!: string;
   @Input() tipe!: string;
+  @Input() btnTitle!: string;
+  icon:string = "pi pi-save";
 
   userForm!:FormGroup;
 
@@ -50,6 +52,7 @@ export class UserFormComponent {
   ngOnInit(): void {
     if(this.tipe === 'update') {
       let updateUsr:User = this.userService.getDataUserUpdate();
+      this.icon = "pi pi-sync";
 
       if(updateUsr === undefined) {
         this.router.navigate(['/home']);
@@ -100,7 +103,7 @@ export class UserFormComponent {
         },
         (error) => {
           console.error('Error inserting user', error);
-          this.messageService.add({ severity: 'danger', summary: 'Error', detail: 'Error insertando usuario', key: 'br', life: 3000 });
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error insertando usuario', key: 'br', life: 3000 });
         }
       )
     }
@@ -109,12 +112,16 @@ export class UserFormComponent {
   updateNewUser(data:User) {
     this.userService.updateUser(data).subscribe(
       (response) => {
-        this.toast.setMessageToast('success','Usuario actualizado', 'El usuario se ha actualizado con exito')
-        this.router.navigate(['/home']);
+        if(response['error']) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: response?.error, key: 'br', life: 3000 });
+        } else {
+          this.toast.setMessageToast('success','Usuario actualizado', 'El usuario se ha actualizado con exito')
+          this.router.navigate(['/home']);
+        }
       },
       (error) => {
         console.error('Error updating user', error);
-        this.messageService.add({ severity: 'danger', summary: 'Error', detail: 'Error actualizando usuario', key: 'br', life: 3000 });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error actualizando usuario', key: 'br', life: 3000 });
       }
     )
   };

@@ -7,11 +7,13 @@ import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 import { DialogConfirmComponent } from "../../components/dialog-confirm/dialog-confirm.component";
 import { UserService } from '../../services/user.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [NavbarComponent, DividerModule, ImageModule, ButtonModule, RouterLink, DialogConfirmComponent],
+  imports: [NavbarComponent, DividerModule, ImageModule, ButtonModule, RouterLink, DialogConfirmComponent,ToastModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
@@ -23,7 +25,7 @@ export class UserDetailComponent {
   id!:string;
   userDetail!: User;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,private messageService: MessageService) {
 
   }
 
@@ -36,9 +38,13 @@ export class UserDetailComponent {
       this.userService.getById(this.id).subscribe(
         (response) => {
           this.userDetail = response;
+          if(response['error']) {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: response?.error, key: 'br', life: 3000 });
+          }
         },
         (error) => {
           console.error('Error fetching data', error);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: error, key: 'br', life: 3000 });
         }
       )
     }
