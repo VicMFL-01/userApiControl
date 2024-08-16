@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Toast } from '../interfaces/toast.interface';
 
-export interface Toast {
-  severity: string;
-  summary: string;
-  detail: string;
-}
+
 
 @Injectable({
   providedIn: 'root'

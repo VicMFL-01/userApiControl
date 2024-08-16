@@ -9,11 +9,12 @@ import { ToastService } from '../../services/toast.service';
 import { Pagination } from '../../interfaces/pagination.interface';
 import { CardModule } from 'primeng/card';
 import { SkeletonProgressComponent } from "../../components/skeleton-progress/skeleton-progress.component";
+import { EmptyRecordsComponent } from "../../components/empty-records/empty-records.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, UserCardComponent, PaginatorModule, CardModule, SkeletonProgressComponent],
+  imports: [NavbarComponent, UserCardComponent, PaginatorModule, CardModule, SkeletonProgressComponent, EmptyRecordsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
