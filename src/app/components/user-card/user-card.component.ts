@@ -23,7 +23,7 @@ export class UserCardComponent {
   updateUser(userData:User | null) {
     if(userData !== null) {
       this.userService.setDataUserUpdate(userData);
-      this.router.navigate(['/update-user'])
+      this.router.navigate(['/updateuser'])
     }
 
   }

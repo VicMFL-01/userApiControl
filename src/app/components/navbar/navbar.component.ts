@@ -27,7 +27,7 @@ export class NavbarComponent {
           {
               label: 'Nuevo Usuario',
               icon: 'pi pi-user',
-              route: '/new-user'
+              route: '/newuser'
           }
       ];
   }
