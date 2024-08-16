@@ -26,7 +26,7 @@
         <p class="errortext">El campo es requerido</p>
       }
       @if(checkControl('email','pattern')) {
-        <p class="errortext">El campo es incorrecto</p>
+        <p class="errortext">El campo email es incorrecto</p>
       }
     </div>
 
@@ -35,6 +35,9 @@
       <input pInputText type="url" id="image" placeholder="Introduce email de usuario" formControlName="image" variant="filled"/>
       @if(checkControl('image','required')) {
         <p class="errortext">El campo es requerido</p>
+      }
+      @if(checkControl('image','pattern')) {
+        <p class="errortext">Introduce una url valida</p>
       }
     </div>
 

@@ -44,7 +44,8 @@ export class UserFormComponent {
         Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
       ]),
       image: new FormControl(null,[
-        Validators.required
+        Validators.required,
+        Validators.pattern('https?://.+')
       ]),
     }, [])
   }
@@ -72,7 +73,8 @@ export class UserFormComponent {
           Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
         ]),
         image: new FormControl(updateUsr.image, [
-          Validators.required
+          Validators.required,
+          Validators.pattern(/^(http:\/\/|https:\/\/).*/)
         ]),
       }, []);
     }
