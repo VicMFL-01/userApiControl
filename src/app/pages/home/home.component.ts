@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ToastService } from '../../services/toast.service';
 import { Pagination } from '../../interfaces/pagination.interface';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, UserCardComponent,PaginatorModule],
+  imports: [NavbarComponent, UserCardComponent,PaginatorModule,CardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -21,7 +22,7 @@ export class HomeComponent {
   router = inject(Router);
 
   pagination!: Pagination;
-  response:User[] | null = null;
+  users:User[] | null = null;
   first: number = 0;
   rows: number = 10;
 
@@ -30,35 +31,26 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    this.userService.getAll(1).subscribe(
+    this.getData(1);
+  }
+
+  onPageChange(event: any) {
+    this.first = event.first;
+    this.rows = event.rows;
+    let page = event?.page + 1;
+    this.getData(page);
+  }
+
+  getData(page:number) {
+    this.userService.getAll(page).subscribe(
       (response) => {
         this.pagination = response;
-        this.response = response.results;
-        this.toast.showToast();
+        this.users = this.pagination.results;
       },
       (error) => {
         console.error('Error fetching data', error);
       }
     );
-
-  }
-
-  onPageChange(event: any) {
-    console.log(event);
-
-      this.first = event.first;
-      this.rows = event.rows;
-      let page = event?.page + 1;
-
-      this.userService.getAll(page).subscribe(
-        (response) => {
-          this.pagination = response;
-          this.response = response.results;
-        },
-        (error) => {
-          console.error('Error fetching data', error);
-        }
-      );
   }
 
 

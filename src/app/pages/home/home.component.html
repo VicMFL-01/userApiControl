@@ -1,16 +1,35 @@
 <app-navbar></app-navbar>
 
-<div class="container">
 
-  <div class="grid mt-3">
+<div class="grid align-items-center justify-content-center mx-auto mt-3">
 
-    @for (user of response; track user._id) {
-      <div class="col flipup animation-duration-1000 ">
+  @for (user of users; track user._id) {
+    <div class="flipup animation-duration-1000 flex-shrink-1 flex-basis-0 p-2">
+      <div class="col-12 md:col-6 lg:col-4 xl:col-3">
         <app-user-card [userData]="user"></app-user-card>
       </div>
-    }
-  </div>
+    </div>
 
+  } @empty {
+    <div class="col">
+      <p-card [style]="{ width: '360px' }" class="flex align-items-center justify-content-center">
+        <ng-template pTemplate="header">
+            <img alt="Not found" src="not-found.jpg" />
+        </ng-template>
+
+        <div class="container flex align-items-center justify-content-center">
+          <div class="content">
+            <h1>No hay registros</h1>
+            <span class="text-lg">Lo sentimos, no hay registros que mostrar.</span>
+          </div>
+      </div>
+
+      </p-card>
+    </div>
+  }
+</div>
+
+@if(users !== null) {
   <div class="card flex justify-content-center">
     <p-paginator
         (onPageChange)="onPageChange($event)"
@@ -20,8 +39,9 @@
         [showCurrentPageReport]="true"
         [showPageLinks]="false"
         [showJumpToPageDropdown]="false"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" />
-</div>
-</div>
+        currentPageReportTemplate="Mostrando {first} - {last} de {totalRecords}" />
+  </div>
+}
+
 
 

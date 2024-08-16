@@ -11,11 +11,6 @@
   padding: 0;
 }
 
-.p-card-custom {
-  box-shadow: 1px 8px 12px rgba(0, 0, 0, 0.2);
-  margin: auto;
-}
-
 .p-menubar .p-menubar-custom, .p-menubar .p-menubar-end {
   margin-left: 0;
 }
@@ -25,3 +20,12 @@ p-menubarsub {
 }
 
 
+@media (max-width:450px) {
+  .p-card {
+    width: 100%;
+  }
+
+  .p-card .footer {
+    flex-direction: column;
+  }
+}
