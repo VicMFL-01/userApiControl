@@ -33,7 +33,7 @@
     <div class="flex flex-column gap-2 mt-5">
       <label for="image">Imagen Usuario</label>
       <input pInputText type="url" id="image" placeholder="Introduce email de usuario" formControlName="image" variant="filled"/>
-      @if(checkControl('url','required')) {
+      @if(checkControl('image','required')) {
         <p class="errortext">El campo es requerido</p>
       }
     </div>

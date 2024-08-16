@@ -1,7 +1,7 @@
 <div class="card">
   <p-menubar [model]="items">
       <ng-template pTemplate="start">
-          <img src="usuario.png" alt="icon" class="icon-menu">
+          <img src="usuario.png" alt="icon" class="icon-menu" [routerLink]="['/home']">
       </ng-template>
       <ng-template pTemplate="item" let-item let-root="root">
         <a [routerLink]="item.route" pRipple class="flex align-items-center p-menuitem-link">

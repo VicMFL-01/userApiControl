@@ -8,11 +8,12 @@ import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ToastService } from '../../services/toast.service';
 import { Pagination } from '../../interfaces/pagination.interface';
 import { CardModule } from 'primeng/card';
+import { SkeletonProgressComponent } from "../../components/skeleton-progress/skeleton-progress.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent, UserCardComponent,PaginatorModule,CardModule],
+  imports: [NavbarComponent, UserCardComponent, PaginatorModule, CardModule, SkeletonProgressComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -25,6 +26,7 @@ export class HomeComponent {
   users:User[] | null = null;
   first: number = 0;
   rows: number = 10;
+  loading:boolean = true;
 
   constructor() {
 
@@ -32,6 +34,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.getData(1);
+    this.toast.showToast();
   }
 
   onPageChange(event: any) {
@@ -44,6 +47,7 @@ export class HomeComponent {
   getData(page:number) {
     this.userService.getAll(page).subscribe(
       (response) => {
+        this.loading = false;
         this.pagination = response;
         this.users = this.pagination.results;
       },
