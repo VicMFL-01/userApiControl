@@ -1,0 +1,39 @@
+<div class="card flex justify-content-center">
+  <p-button icon="pi pi-question" [rounded]="true"
+            severity="secondary" [outlined]="true" (click)="showDialog()"
+            pTooltip="Acerca de" tooltipPosition="left" />
+  <p-dialog
+      header="Header"
+      [(visible)]="visible"
+      [modal]="true"
+      [style]="{ width: '25rem' }">
+          <ng-template pTemplate="header">
+              <div class="inline-flex align-items-center justify-content-center gap-2">
+                  <p-avatar size="xlarge"
+                      image="https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2021/11/halo-infinite-2535867.jpg?tf=1200x1200"
+                      shape="circle" />
+                  <span class="font-bold white-space-nowrap">
+                      Victor Manuel Flores Lazcano
+                  </span>
+              </div>
+          </ng-template>
+          <span class="p-text-secondary block mb-5">Aplicación realizada con las siguientes tecnologias:</span>
+          <div class="text-center">
+            <img src="https://storage.googleapis.com/ilerna_media-cloud/wordpress_ilerna/production/fronted-tecnologias-desarrollo-aplicaciones-web.png" alt="tecnologia1">
+            <span class="p-text-secondary block mb-5">Html, CSS y JavaScript</span>
+          </div>
+          <div class="text-center">
+            <img src="https://www.searchenginejournal.com/wp-content/uploads/2019/04/the-seo-guide-to-angular.png" alt="tecnologia1">
+            <span class="p-text-secondary block mb-5">Angular</span>
+          </div>
+          <div class="text-center">
+            <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1615290301809/F7V3oj98I.jpeg" alt="tecnologia1">
+            <span class="p-text-secondary block mb-5">PrimeNG</span>
+          </div>
+          <div class="text-center">
+            <img src="https://www.primefaces.org/cdn/primeflex/images/PrimeFlexLogo.svg" alt="tecnologia1">
+            <span class="p-text-secondary block mb-5">PrimeFlex</span>
+          </div>
+
+  </p-dialog>
+</div>

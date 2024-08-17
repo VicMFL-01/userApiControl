@@ -6,11 +6,14 @@ import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { RippleModule } from 'primeng/ripple';
+import { ButtonModule } from 'primeng/button';
+import { AboutComponent } from "../about/about.component";
+
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule],
+  imports: [MenubarModule, BadgeModule, AvatarModule, InputTextModule, RippleModule, CommonModule, AboutComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -31,5 +34,6 @@ export class NavbarComponent {
           }
       ];
   }
+
 }
 
